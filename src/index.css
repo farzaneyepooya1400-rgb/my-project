@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    border-color: var(--tw-border-color, rgba(226, 232, 240, 0.8));
+  }
+  body {
+    font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+/* Persian tile patterns and custom accents */
+.bg-persian-lapis {
+  background-color: #102a45;
+}
+
+.text-persian-lapis {
+  color: #102a45;
+}
+
+.border-persian-lapis {
+  border-color: #102a45;
+}
+
+.bg-persian-turquoise {
+  background-color: #0d9488;
+}
+
+.text-persian-turquoise {
+  color: #0d9488;
+}
+
+.bg-persian-saffron {
+  background-color: #d97706;
+}
+
+.text-persian-saffron {
+  color: #d97706;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}

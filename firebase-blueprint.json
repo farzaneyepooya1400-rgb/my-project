@@ -1,0 +1,299 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "System user account with hashed password and role-based permissions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string", "minLength": 3, "maxLength": 50 },
+        "passwordHash": { "type": "string" },
+        "role": { "type": "string", "enum": ["sub_admin", "admin", "academic_vp", "cultural_vp", "teacher", "student", "parent"] },
+        "fullName": { "type": "string", "maxLength": 100 },
+        "linkedId": { "type": "string", "description": "Student national ID/number or Teacher personnel ID" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["username", "passwordHash", "role", "fullName"]
+    },
+    "GradeLevel": {
+      "title": "GradeLevel",
+      "description": "School grade level (e.g. پایه هفتم)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "SchoolClass": {
+      "title": "SchoolClass",
+      "description": "Classroom belonging to a grade level",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "gradeId": { "type": "string" },
+        "academicYear": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "gradeId"]
+    },
+    "Student": {
+      "title": "Student",
+      "description": "Enrolled student",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "nationalId": { "type": "string", "pattern": "^[0-9]{10}$" },
+        "studentCode": { "type": "string" },
+        "classId": { "type": "string" },
+        "gradeId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["firstName", "lastName", "nationalId", "classId"]
+    },
+    "Teacher": {
+      "title": "Teacher",
+      "description": "School faculty member",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fullName": { "type": "string" },
+        "specialty": { "type": "string" },
+        "degree": { "type": "string" },
+        "experienceYears": { "type": "number" },
+        "employmentType": { "type": "string", "enum": ["official", "contractual", "hourly", "corporate"] },
+        "teacherCode": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["fullName", "specialty", "teacherCode"]
+    },
+    "TeacherAssignment": {
+      "title": "TeacherAssignment",
+      "description": "Assignment of teacher to specific class and subject",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "classId": { "type": "string" },
+        "subject": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["teacherId", "classId", "subject"]
+    },
+    "StudentGrade": {
+      "title": "StudentGrade",
+      "description": "Academic scores for a student in a subject",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "classId": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "subject": { "type": "string" },
+        "preMidterm": { "type": "number" },
+        "midterm": { "type": "number" },
+        "postMidterm": { "type": "number" },
+        "final": { "type": "number" },
+        "continuous": { "type": "number" },
+        "calculatedAverage": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["studentId", "classId", "teacherId", "subject"]
+    },
+    "AttendanceRecord": {
+      "title": "AttendanceRecord",
+      "description": "Monthly attendance, homework and behavior metrics",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "classId": { "type": "string" },
+        "month": { "type": "string" },
+        "absences": { "type": "number" },
+        "tardies": { "type": "number" },
+        "homeworkPercent": { "type": "number" },
+        "homeworkQuality": { "type": "number" },
+        "participation": { "type": "number" },
+        "behavior": { "type": "number" },
+        "responsibility": { "type": "number" },
+        "teamwork": { "type": "number" },
+        "rulesObservance": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["studentId", "classId", "month"]
+    },
+    "PsychTestResult": {
+      "title": "PsychTestResult",
+      "description": "Gardner, Holland, learning styles and personality test results",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "gardnerScores": { "type": "object" },
+        "hollandScores": { "type": "object" },
+        "hollandCode": { "type": "string" },
+        "learningStyle": { "type": "string" },
+        "personalityType": { "type": "string" },
+        "answers": { "type": "object" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["studentId", "hollandCode", "learningStyle", "personalityType"]
+    },
+    "FamilyProfile": {
+      "title": "FamilyProfile",
+      "description": "Parent and household background info",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "fatherEducation": { "type": "string" },
+        "fatherJob": { "type": "string" },
+        "motherEducation": { "type": "string" },
+        "motherJob": { "type": "string" },
+        "childrenCount": { "type": "number" },
+        "maritalStatus": { "type": "string" },
+        "heightCm": { "type": "number" },
+        "weightKg": { "type": "number" },
+        "calculatedBmi": { "type": "number" },
+        "sleepHour": { "type": "string" },
+        "screenTimeHours": { "type": "number" },
+        "breakfastStatus": { "type": "string" },
+        "hasVisionHearingIssue": { "type": "boolean" },
+        "sensoryIssueDetails": { "type": "string" },
+        "distanceToSchoolKm": { "type": "number" },
+        "commuteMethod": { "type": "string" },
+        "homeResponsibilityScore": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["studentId"]
+    },
+    "TeacherEvaluation": {
+      "title": "TeacherEvaluation",
+      "description": "Multi-role evaluation score for a teacher",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "evaluatorRole": { "type": "string", "enum": ["admin", "academic_vp", "cultural_vp", "parent"] },
+        "evaluatorId": { "type": "string" },
+        "scores": { "type": "object" },
+        "averageScore": { "type": "number" },
+        "notes": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["teacherId", "evaluatorRole", "evaluatorId", "averageScore"]
+    },
+    "SubjectDifficulty": {
+      "title": "SubjectDifficulty",
+      "description": "Subject difficulty coefficient configurable by principal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "subject": { "type": "string" },
+        "coefficient": { "type": "number" },
+        "rationale": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["subject", "coefficient", "rationale"]
+    },
+    "ExtracurricularActivity": {
+      "title": "ExtracurricularActivity",
+      "description": "Monthly extracurricular activity records logged by cultural VP",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "classId": { "type": "string" },
+        "month": { "type": "string" },
+        "artistic": { "type": "number" },
+        "sports": { "type": "number" },
+        "skills": { "type": "number" },
+        "scientific": { "type": "number" },
+        "monthlyAverage": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["classId", "month", "monthlyAverage"]
+    },
+    "AppNotification": {
+      "title": "AppNotification",
+      "description": "Real-time school notifications, grade alerts, vice-principal messages, and meeting reminders",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string", "enum": ["grade", "meeting", "vp_message", "attendance", "general"] },
+        "senderRole": { "type": "string" },
+        "senderName": { "type": "string" },
+        "targetRole": { "type": "string" },
+        "targetStudentId": { "type": "string" },
+        "targetClassId": { "type": "string" },
+        "readBy": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "message", "type", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/AppNotification" },
+      "description": "Real-time and persistent notifications and alerts"
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User credentials, hashed password, and role profile"
+    },
+    "/gradeLevels/{gradeId}": {
+      "schema": { "$ref": "#/entities/GradeLevel" },
+      "description": "School grades"
+    },
+    "/schoolClasses/{classId}": {
+      "schema": { "$ref": "#/entities/SchoolClass" },
+      "description": "School classrooms"
+    },
+    "/students/{studentId}": {
+      "schema": { "$ref": "#/entities/Student" },
+      "description": "Student roster"
+    },
+    "/teachers/{teacherId}": {
+      "schema": { "$ref": "#/entities/Teacher" },
+      "description": "Faculty members"
+    },
+    "/teacherAssignments/{assignmentId}": {
+      "schema": { "$ref": "#/entities/TeacherAssignment" },
+      "description": "Teacher to class-subject assignments"
+    },
+    "/studentGrades/{gradeId}": {
+      "schema": { "$ref": "#/entities/StudentGrade" },
+      "description": "Grading sheets for assignments"
+    },
+    "/attendanceRecords/{recordId}": {
+      "schema": { "$ref": "#/entities/AttendanceRecord" },
+      "description": "Monthly attendance, homework, and behavioral metrics"
+    },
+    "/psychTestResults/{resultId}": {
+      "schema": { "$ref": "#/entities/PsychTestResult" },
+      "description": "Student psychological assessment results"
+    },
+    "/familyProfiles/{profileId}": {
+      "schema": { "$ref": "#/entities/FamilyProfile" },
+      "description": "Family background and student health metrics"
+    },
+    "/teacherEvaluations/{evalId}": {
+      "schema": { "$ref": "#/entities/TeacherEvaluation" },
+      "description": "Multi-stakeholder evaluations for teachers"
+    },
+    "/subjectDifficulties/{subjectId}": {
+      "schema": { "$ref": "#/entities/SubjectDifficulty" },
+      "description": "Subject difficulty coefficients for fair grading normalization"
+    },
+    "/extracurricularActivities/{activityId}": {
+      "schema": { "$ref": "#/entities/ExtracurricularActivity" },
+      "description": "Cultural and extracurricular activity tracking"
+    }
+  }
+}

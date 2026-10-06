@@ -1,0 +1,6 @@
+{
+  "name": "سامانه مدیریت و پایش مدرسه دانا",
+  "description": "سامانه جامع و چندکاربره مدیریت هوشمند مدرسه، پایش تحصیلی، آزمون‌های هوش و هدایت تحصیلی، ارزیابی چندبعدی معلمان و فعالیت‌های پرورشی",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

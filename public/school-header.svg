@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 430" role="img" aria-labelledby="title desc">
+  <title id="title">سامانه هوشمند مدرسه‌یار</title>
+  <desc id="desc">هدر مدرسه با دانش آموزان و معلم</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b9e7c6"/>
+      <stop offset="0.48" stop-color="#e9f3d0"/>
+      <stop offset="1" stop-color="#8ac4b7"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#377d65"/>
+      <stop offset="1" stop-color="#174d5d"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#123b4a" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="430" fill="url(#sky)"/>
+  <circle cx="135" cy="70" r="120" fill="#74b776" opacity=".38"/>
+  <circle cx="1510" cy="70" r="180" fill="#4e9d83" opacity=".32"/>
+  <path d="M0 290 C230 210 350 300 550 255 S930 215 1130 275 S1420 220 1600 260 V430 H0Z" fill="url(#ground)" opacity=".84"/>
+  <path d="M0 370 C260 320 430 382 680 350 S1120 320 1600 360 V430 H0Z" fill="#0e3c52" opacity=".62"/>
+  <g fill="#eff8dd" opacity=".75">
+    <circle cx="90" cy="125" r="18"/><circle cx="124" cy="106" r="24"/><circle cx="161" cy="129" r="17"/>
+    <circle cx="1420" cy="118" r="22"/><circle cx="1460" cy="92" r="30"/><circle cx="1505" cy="120" r="20"/>
+  </g>
+  <g transform="translate(110 145)" filter="url(#shadow)">
+    <circle cx="72" cy="50" r="38" fill="#f2b37b"/><path d="M34 48 Q70 0 110 42 Q83 24 38 65Z" fill="#172f4b"/>
+    <path d="M25 170 Q28 88 72 88 Q116 88 121 170Z" fill="#1c5d87"/>
+    <path d="M28 120 L-12 164 M116 120 L155 155" stroke="#f2b37b" stroke-width="20" stroke-linecap="round"/>
+    <path d="M25 167 L6 245 M120 167 L143 245" stroke="#173e62" stroke-width="28" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(300 125)" filter="url(#shadow)">
+    <circle cx="80" cy="55" r="42" fill="#d99b69"/><path d="M38 48 Q77 2 120 45 Q92 20 45 67Z" fill="#1a2744"/>
+    <path d="M25 190 Q30 92 80 92 Q130 92 135 190Z" fill="#244f78"/>
+    <path d="M33 128 L-8 176 M125 127 L168 166" stroke="#d99b69" stroke-width="20" stroke-linecap="round"/>
+    <path d="M45 183 L24 252 M115 183 L136 252" stroke="#193c5d" stroke-width="28" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(500 155)" filter="url(#shadow)">
+    <circle cx="72" cy="48" r="38" fill="#f0ae78"/><path d="M34 44 Q68 0 108 36 Q79 22 38 61Z" fill="#252942"/>
+    <path d="M28 170 Q30 85 72 85 Q115 85 120 170Z" fill="#176d82"/>
+    <path d="M33 115 L-8 151 M112 114 L151 151" stroke="#f0ae78" stroke-width="18" stroke-linecap="round"/>
+    <path d="M40 165 L20 240 M105 165 L126 240" stroke="#1c3d60" stroke-width="26" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(1110 82)" filter="url(#shadow)">
+    <rect width="410" height="205" rx="28" fill="#123f60" opacity=".97"/>
+    <path d="M68 84 H342" stroke="#f2b632" stroke-width="6" opacity=".9"/>
+    <text x="205" y="76" text-anchor="middle" direction="rtl" fill="#fff" font-family="Tahoma, Arial, sans-serif" font-size="34" font-weight="700">سامانه هوشمند</text>
+    <text x="205" y="132" text-anchor="middle" direction="rtl" fill="#ffc21c" font-family="Tahoma, Arial, sans-serif" font-size="48" font-weight="900">مدرسه‌یار</text>
+    <text x="205" y="174" text-anchor="middle" direction="rtl" fill="#d9f0ef" font-family="Tahoma, Arial, sans-serif" font-size="17">مدیریت یکپارچه، پایش تحصیلی و ارزیابی معلمان</text>
+  </g>
+  <g transform="translate(940 42)" fill="none" stroke="#f7c536" stroke-width="7" stroke-linecap="round">
+    <path d="M0 30 L68 0 L136 30 L68 60Z" fill="#f7c536" stroke="#123f60"/>
+    <path d="M18 38 V78 Q68 112 118 78 V38" fill="#fff" stroke="#123f60"/>
+    <path d="M68 61 V105" stroke="#123f60"/>
+  </g>
+  <path d="M0 430 H1600" stroke="#f5c43a" stroke-width="8"/>
+</svg>
